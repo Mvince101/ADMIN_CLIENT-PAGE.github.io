@@ -1,0 +1,342 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+::after,
+::before {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+li {
+    list-style: none;
+}
+
+h1 {
+    font-weight: 600;
+    font-size: 2rem;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+}
+
+.wrapper {
+    display: flex;
+}
+
+.main {
+    min-height: 100vh;
+    width: 100%;
+    overflow: hidden;
+    transition: all 0.35s ease-in-out;
+    background-color: #fafbfe;
+}
+
+#sidebar {
+    width: 70px;
+    min-width: 70px;
+    z-index: 1000;
+    transition: all .25s ease-in-out;
+    background-color: #0e2238;
+    display: flex;
+    flex-direction: column;
+}
+
+#sidebar.expand {
+    width: 260px;
+    min-width: 260px;
+}
+
+.toggle-btn {
+    background-color: transparent;
+    cursor: pointer;
+    border: 0;
+    padding: 1rem 1.5rem;
+}
+
+.toggle-btn i {
+    font-size: 1.5rem;
+    color: #FFF;
+}
+
+.sidebar-logo {
+    margin: auto 0;
+}
+
+.sidebar-logo a {
+    color: #FFF;
+    font-size: 1.15rem;
+    font-weight: 600;
+}
+
+#sidebar:not(.expand) .sidebar-logo,
+#sidebar:not(.expand) a.sidebar-link span {
+    display: none;
+}
+
+.sidebar-nav {
+    padding: 2rem 0;
+    flex: 1 1 auto;
+}
+
+a.sidebar-link {
+    padding: .625rem 1.625rem;
+    color: #FFF;
+    display: block;
+    font-size: 0.9rem;
+    white-space: nowrap;
+    border-left: 3px solid transparent;
+}
+
+.sidebar-link i {
+    font-size: 1.1rem;
+    margin-right: .75rem;
+}
+
+a.sidebar-link:hover {
+    background-color: rgba(255, 255, 255, .075);
+    border-left: 3px solid #3b7ddd;
+}
+
+.sidebar-item {
+    position: relative;
+}
+
+#sidebar:not(.expand) .sidebar-item .sidebar-dropdown {
+    position: absolute;
+    top: 0;
+    left: 70px;
+    background-color: #0e2238;
+    padding: 0;
+    min-width: 15rem;
+    display: none;
+}
+
+#sidebar:not(.expand) .sidebar-item:hover .has-dropdown+.sidebar-dropdown {
+    display: block;
+    max-height: 15em;
+    width: 100%;
+    opacity: 1;
+}
+
+#sidebar.expand .sidebar-link[data-bs-toggle="collapse"]::after {
+    border: solid;
+    border-width: 0 .075rem .075rem 0;
+    content: "";
+    display: inline-block;
+    padding: 2px;
+    position: absolute;
+    right: 1.5rem;
+    top: 1.4rem;
+    transform: rotate(-135deg);
+    transition: all .2s ease-out;
+}
+
+#sidebar.expand .sidebar-link[data-bs-toggle="collapse"].collapsed::after {
+    transform: rotate(45deg);
+    transition: all .2s ease-out;
+}
+/* Style for active sidebar link */
+.sidebar-link.active {
+    background-color: #397ada; /* Highlight with blue background */
+    color: white; /* Change text color to white */
+}
+
+.sidebar-link.active i {
+    color: white; /* Optional: Change icon color */
+}
+
+.nav-tabs {
+    border-bottom: 2px solid #dee2e6;
+}
+
+.nav-item .nav-link {
+    border: none;
+    border-radius: 0.25rem 0.25rem 0 0;
+    font-weight: 500;
+    padding: 12px 24px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #495057;
+    background-color: #f8f9fa;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.nav-item .nav-link:hover {
+    background-color: #e9ecef;
+    color: #0e2238;
+}
+
+.nav-item .nav-link.active {
+    color: #fff;
+    background-color: #0e2238;
+    border-color: #0e2238;
+    font-weight: 700;
+}
+/* Professional styling for search bar */
+#searchBar {
+    border-radius: 0 5px 5px 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.input-group-text {
+    border-radius: 5px 0 0 5px;
+    border: none;
+}
+
+.input-group {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+#searchBar:focus {
+    outline: none;
+    border-color: #0e2238;
+    box-shadow: 0 0 5px #0e2238(0, 123, 255, 0.5);
+}
+
+.form-container {
+    max-width: 600px;
+    margin: 30px auto;
+    padding: 20px;
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    background-color: #f8f9fa;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.form-container h1 {
+    text-align: center;
+    color: #0e2238;
+    font-weight: bold;
+}
+
+.form-container label {
+    color: #0e2238;
+}
+
+.form-container input,
+.form-container select,
+.form-container textarea {
+    border: 1px solid #0e2238;
+}
+
+.form-container button {
+    background-color: #0e2238;
+    color: white;
+    width: 100%;
+
+}
+.form-container button:hover {
+    background-color: #397ada;
+    color: white;
+    width: 100%;
+
+}
+
+/* Scrollable Table Container */
+.table-scroll {
+    max-height: 400px; /* Adjust to your preferred height */
+    overflow-y: auto; /* Enable vertical scroll */
+    border: 1px solid #dee2e6; /* Optional: Add a border for clarity */
+    margin-top: 15px; /* Add some spacing */
+}
+
+/* Optional: Customize Scrollbar Appearance */
+.table-scroll::-webkit-scrollbar {
+    width: 8px; /* Scrollbar width */
+    height: 8px;
+}
+
+.table-scroll::-webkit-scrollbar-thumb {
+    background-color: #6c757d; /* Scrollbar thumb color */
+    border-radius: 4px; /* Rounded edges */
+}
+
+.table-scroll::-webkit-scrollbar-thumb:hover {
+    background-color: #495057; /* Darker thumb color on hover */
+}
+
+.table-scroll::-webkit-scrollbar-track {
+    background-color: #f8f9fa; /* Scrollbar track color */
+}
+
+
+.table-scroll table {
+    width: 100%; /* Ensure the table fits properly */
+    border-collapse: collapse; /* Proper spacing between cells */
+}
+
+.table-scroll thead th {
+    position: sticky; /* Makes the header sticky */
+    top: 0; /* Stick to the top of the container */
+    background-color: #10243c; /* Match the table-dark theme */
+    color: white; /* Ensure the text is visible */
+    z-index: 1; /* Keep it above the table rows */
+    border-bottom: 1px solid #dee2e6; /* Add a separator line */
+    padding: 10px; /* Adjust padding for better spacing */
+}
+
+.appointments-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.appointments-list {
+    margin-top: 20px;
+}
+
+.card {
+    border: none;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    background-color: #fff;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.card-title {
+    font-size: 18px;
+    font-weight: bold;
+    color: black;
+}
+
+.no-appointments {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 18px;
+    color: #6c757d;
+}
+
+.card-header {
+    background-color: #0e2238;
+    color: #f0f4f9;
+    font-weight: bold;
+    text-align: center;
+}
+.main {
+    background-color: #f0f4f9;
+    min-height: 100vh;
+    padding: 40px;
+}
+.custom-btn {
+    padding: 4px 8px; /* Makes the button smaller */
+    font-size: 12px;  /* Reduces text size */
+    background-color: #6c757d; /* Grey color (Bootstrap secondary color) */
+    color: white; /* Text color */
+    border: none; /* Removes border */
+    border-radius: 3px; /* Slightly rounded corners */
+  }
+  
+  .custom-btn:hover {
+    background-color: #5a6268; /* Darker grey for hover effect */
+  }
+  

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Client</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="bg-light">
+    <div class="container mt-5">
+        <h1>Edit Client</h1>
+        <form id="editForm">
+            <div class="mb-3">
+                <label for="editName" class="form-label">Name</label>
+                <input type="text" class="form-control" id="editName">
+            </div>
+            <div class="mb-3">
+                <label for="editServices" class="form-label">Services</label>
+                <input type="text" class="form-control" id="editServices">
+            </div>
+            <div class="mb-3">
+                <label for="editDate" class="form-label">Date</label>
+                <input type="date" class="form-control" id="editDate">
+            </div>
+            <div class="mb-3">
+                <label for="editTime" class="form-label">Time</label>
+                <input type="time" class="form-control" id="editTime">
+            </div>
+            <div class="mb-3">
+                <label for="editPayment" class="form-label">Payment</label>
+                <input type="text" class="form-control" id="editPayment">
+            </div>
+            <div class="d-flex">
+                <button type="button" class="btn btn-primary me-3" onclick="saveChanges()">Save Changes</button>
+                <button type="button" class="btn btn-secondary" onclick="cancelEdit()">Cancel</button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        // Load existing client data for editing
+        window.onload = function() {
+            const clientData = JSON.parse(localStorage.getItem("editClient"));
+            if (clientData) {
+                document.getElementById("editName").value = clientData.name;
+                document.getElementById("editServices").value = clientData.services;
+                document.getElementById("editDate").value = clientData.date;
+                document.getElementById("editTime").value = clientData.time;
+                document.getElementById("editPayment").value = clientData.payment;
+            }
+        };
+    
+        // Save changes to the client
+        function saveChanges() {
+            const updatedClient = {
+                name: document.getElementById("editName").value,
+                services: document.getElementById("editServices").value,
+                date: document.getElementById("editDate").value,
+                time: document.getElementById("editTime").value,
+                payment: document.getElementById("editPayment").value
+            };
+    
+            // Show confirmation alert
+            if (confirm("Are you sure you want to save changes?")) {
+                localStorage.setItem("updatedClient", JSON.stringify(updatedClient));
+                alert("Changes saved successfully!");
+                window.location.href = "clients.html"; // Redirect back to clients page
+            }
+        }
+    
+        // Cancel editing and return to clients page
+        function cancelEdit() {
+            if (confirm("Are you sure you want to cancel editing? Changes will not be saved.")) {
+                alert("No changes were saved.");
+                window.location.href = "clients.html";
+            }
+        }
+    </script>
+    
+</body>
+</html>
